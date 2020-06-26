@@ -6,6 +6,5 @@
 ```sh
 git clone https://github.com/collinsmuriuki/guessing-game.git
 cd guessing-game
-cargo build
-./target/debug/guessing-game
+cargo run
 ```
