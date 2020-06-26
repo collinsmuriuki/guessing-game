@@ -1,5 +1,4 @@
-use std::io;
-use std::cmp::Ordering;
+use std::{io, cmp::Ordering};
 use rand::Rng;
 
 // https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html
