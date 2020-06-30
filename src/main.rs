@@ -20,8 +20,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         io::stdin()
             .read_line(&mut guess)?;
         
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
+        let guess: i32 = match guess.trim().parse() {
+            Ok(num) => {
+                if num < 1 || num > 100 {
+                    println!("Out of range, enter a number between 1 and 100");
+                    continue;
+                }
+                num
+            },
             Err(_) => {
                 println!("Please enter a number");
                 continue;
