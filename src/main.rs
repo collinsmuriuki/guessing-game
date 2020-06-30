@@ -29,8 +29,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 num
             },
             Err(_) => {
-                println!("Please enter a number");
-                continue;
+                panic!("Please enter a number");
             },
         };
 
