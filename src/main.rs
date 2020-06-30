@@ -2,6 +2,10 @@ use std::{io, cmp::Ordering};
 use rand::Rng;
 use std::error::Error;
 
+mod guess;
+
+use guess::Guess;
+
 // https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -20,22 +24,18 @@ fn main() -> Result<(), Box<dyn Error>> {
         io::stdin()
             .read_line(&mut guess)?;
         
-        let guess: i32 = match guess.trim().parse() {
+        let guess: Guess = match guess.trim().parse() {
             Ok(num) => {
-                if num < 1 || num > 100 {
-                    println!("Out of range, enter a number between 1 and 100");
-                    continue;
-                }
-                num
+                Guess::new(num)
             },
             Err(_) => {
                 panic!("Please enter a number");
             },
         };
 
-        println!("You guessed: {}", guess);
+        println!("You guessed: {}", &guess.value());
 
-        match guess.cmp(&secret_number) {
+        match guess.value().cmp(&secret_number) {
             Ordering::Less => println!("😕 Too small!"),
             Ordering::Greater => println!("😬 Too big!"),
             Ordering::Equal => {
