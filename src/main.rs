@@ -1,9 +1,10 @@
 use std::{io, cmp::Ordering};
 use rand::Rng;
+use std::error::Error;
 
 // https://doc.rust-lang.org/book/ch02-00-guessing-game-tutorial.html
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     println!("Guess the number!");
 
     let secret_number = rand::thread_rng()
@@ -17,8 +18,7 @@ fn main() {
         let mut guess = String::new();
         
         io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
+            .read_line(&mut guess)?;
         
         let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
@@ -39,4 +39,5 @@ fn main() {
             }
         }
     }
+    Ok(())
 }
