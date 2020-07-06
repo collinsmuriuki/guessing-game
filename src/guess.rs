@@ -1,3 +1,6 @@
+#[cfg(test)]
+mod test;
+
 pub struct Guess {
     value: i32,
 }

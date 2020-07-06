@@ -8,6 +8,7 @@ A simple program that covers the fundamentals of Rust:
 * Functions
 * Error handling
 * Crates
+* Testing
 
 ## Usage
 
@@ -15,4 +16,9 @@ A simple program that covers the fundamentals of Rust:
 git clone https://github.com/collinsmuriuki/guessing-game.git
 cd guessing-game
 cargo run
+```
+
+## Test
+```sh
+cargo test
 ```
