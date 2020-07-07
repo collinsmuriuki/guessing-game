@@ -1,6 +1,3 @@
-#[cfg(test)]
-mod test;
-
 pub struct Guess {
     value: i32,
 }
@@ -15,5 +12,16 @@ impl Guess {
 
     pub fn value(&self) -> i32 {
         self.value
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::Guess;
+
+    #[test]
+    #[should_panic]
+    fn greater_than_100() {
+        Guess::new(200);
     }
 }
